@@ -1,0 +1,17 @@
+.page
+  display: grid
+  grid-template-columns: 300px 1fr
+  grid-template-rows: 1fr 48px
+  grid-template-areas: "header main" "footer footer"
+
+  &-header
+    grid-area: header
+
+  &-main
+    padding: 20px 40px
+    grid-area: main
+    color: $midnight-moss
+
+
+  &-footer
+    grid-area: footer

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Set title -->
+  <title>
+    <%= title %>
+  </title>
+  <!-- Set favicon -->
+  <link rel="icon" href="/favicon.ico?v" type="image/x-icon">
+  <!-- Font awesome styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Connect styles -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="page">
+  <!-- Header part -->
+  <%- include("./partials/header"); %>
+
+    <!-- Main part -->
+    <main class="main page-main">
+      <section id="expenses" class="expenses main-expenses">
+        <div class="expenses-headings row align-items-center justify-content-between">
+          <h2 class="expenses-title">Expenses</h2>
+          <div class="expenses-add-new-expense">
+            <button class="expenses-add-new-expense-button" type="submit">New expense</button>
+          </div>
+        </div>
+        <div class="metrics expenses-metrics row align-items-center justify-content-between">
+          <div class="time-range metrics-time-range column align-items-start">
+            <h3 class="time-range-title">Last</h3>
+            <span class="time-range-info"><i class="fa fa-solid fa-infinity"></i></span>
+          </div>
+          <span class="metrics-border-line"></span>
+          <div class="transactions-amount metrics-transactions-amount column align-items-start">
+            <h3 class="transactions-amount-title">Transactions</h3>
+            <span class="transactions-amount-info">
+              <%= expenses.length %>
+            </span>
+          </div>
+          <span class="metrics-border-line"></span>
+          <div class="total-spent metrics-total-spent column align-items-start">
+            <h3 class="total-spent-title">Total spent</h3>
+            <span class="total-spent-info">$<%= expenses.reduce((acc, curr)=> acc += curr["price"],
+                0).toLocaleString("en-US") %></span>
+          </div>
+        </div>
+        <% if(expenses.length){ %>
+          <div class="items expenses-items column">
+            <div class="headings items-headings row align-items-center">
+              <p class="headings-date">Date</p>
+              <p class="headings-vendor">Vendor</p>
+              <p class="headings-amount">Amount</p>
+              <p class="headings-actions">Actions</p>
+            </div>
+            <div class="list items-list">
+              <% expenses.forEach(function(expense, index) { %>
+                <div class="list-item row align-items-center">
+                  <span class="list-item-date">
+                    <%= expense.date %>
+                  </span>
+                  <div class="vendor list-item-vendor row align-items-center">
+                    <img src="/images/vendor-avatar-<%= (index % 3) + 1%>.png" alt="Vendor Logo" class="vendor-image">
+                    <div class="vendor-description column align-items-start justify-content-center">
+                      <h4 class="vendor-title">
+                        <%= expense.vendor.name %>
+                      </h4>
+                      <span class="vendor-categories">
+                        <%= expense.vendor.tags %>
+                      </span>
+                    </div>
+                  </div>
+                  <div>
+                    <span class=" list-item-amount">$<%= expense.price.toLocaleString("en-US") %></span>
+                  </div>
+                  <div class="list-actions">
+                    <div class="list-actions-container">
+                      <button class="list-actions-button update-btn" data-id=<%= expense.id %>>
+                        <i class="list-actions-icon fa fa-light fa-pen-to-square"></i>
+                      </button>
+                      <button class="list-actions-button delete-btn" data-id=<%= expense.id %>>
+                        <i class="list-actions-icon fa fa-light fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <% }); %>
+            </div>
+            <% } else { %>
+              <h4 class="expenses-absent">No expenses, you are still rich</h4>
+              <% } %>
+      </section>
+    </main>
+
+    <!-- Footer part -->
+    <%- include("./partials/footer"); %>
+</body>
+
+</html>

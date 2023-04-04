@@ -1,0 +1,28 @@
+.profile
+  width: 100%
+  padding-top: 1rem
+  margin-top: auto
+  display: grid
+  grid-template-areas: "avatar description"
+  grid-template-columns: 50px 1fr
+  align-items: center
+  column-gap: 20px
+  border-top: 1px solid $gunsmoke
+
+  &-avatar
+    width: 50px
+    height: 50px
+    grid-area: avatar
+    border-radius: 50px
+
+  &-description
+    grid-area: description
+
+  &-name
+    font-size: 24px
+    line-height: 24px
+
+  &-email
+    font-size: 14px
+    line-height: 14px
+    color: $gunsmoke

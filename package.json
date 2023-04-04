@@ -1,0 +1,22 @@
+{
+  "name": "spendings-application",
+  "version": "1.0.0",
+  "description": "this web application was created to fulfill web technology module's requriements and does not represent an actual company or service",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "watchSass": "sass --watch ./public/styles/main.sass ./public/css/main.css"
+  },
+  "author": "00017192",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.9",
+    "express-validator": "^6.15.0",
+    "nodemon": "^2.0.22",
+    "serve-favicon": "^2.5.0",
+    "uniqid": "^5.4.0"
+  }
+}

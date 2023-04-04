@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Set title -->
+  <title>
+    <%= title %>
+  </title>
+  <!-- Set favicon -->
+  <link rel="icon" href="/favicon.ico?v" type="image/x-icon">
+  <!-- Font awesome styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Connect styles -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="page">
+  <!-- Header part -->
+  <%- include("./partials/header"); %>
+
+  <!-- Main part -->
+  <main class="main page-main">
+    <section class="create-new-expense">
+      <% if (expense && updating === true) { %>
+        <h2 class="create-new-expense-title">Update expense</h2>
+        <form class="form create-new-expense-form column align-items-start" id="form-update" data-id="<%= expense.id %>">
+          <div class="form-date-container row align-items-center">
+            <label for="date" class="form-label">Date</label>
+            <input type="text" name="date" id="date" class="form-input" placeholder="dd/mm/yyyy" value="<%= expense.date %>">
+          </div>
+          <div class="form-date-container row align-items-center">
+            <label for="vendor-name" class="form-label">Vendor Name</label>
+            <input type="text" name="vendor-name" id="vendor-name" class="form-input" placeholder="Vendor name" value="<%= expense.vendor.name %>">
+          </div>
+          <div class="form-date-container row align-items-center">
+            <label for="vendor-tags" class="form-label">Vendor Tags</label>
+            <input type="text" name="vendor-tags" id="vendor-tags" class="form-input" placeholder="Write with comma" value="<%= expense.vendor.tags %>">
+          </div>
+          <div class="form-date-container row align-items-center">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="price" id="price" class="form-input" placeholder="Only digits (no floating numbers)" value="<%= expense.price %>">
+          </div>
+          <button class="form-button update-record" type="submit">Update expense</button>
+        </form>
+      <% } else { %>
+        <h2 class="create-new-expense-title">Create a new expense</h2>
+        <form class="form create-new-expense-form column align-items-start" action="/expenses/create" method="POST">
+          <div class="form-date-container row align-items-center">
+            <label for="date" class="form-label">Date</label>
+            <input type="text" name="date" id="date" class="form-input" placeholder="dd/mm/yyyy">
+          </div>
+          <div class="form-date-container row align-items-center">
+            <label for="vendor-name" class="form-label">Vendor Name</label>
+            <input type="text" name="vendor-name" id="vendor-name" class="form-input" placeholder="Vendor name">
+          </div>
+          <div class="form-date-container row align-items-center">
+            <label for="vendor-tags" class="form-label">Vendor Tags</label>
+            <input type="text" name="vendor-tags" id="vendor-tags" class="form-input" placeholder="Write with comma">
+          </div>
+          <div class="form-date-container row align-items-center">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="price" id="price" class="form-input" placeholder="Only digits (no floating numbers)">
+          </div>
+          <button class="form-button" type="submit">Create expense</button>
+        </form>
+      <% } %>
+    </section>
+  </main>
+
+  <!-- Footer part -->
+  <%- include("./partials/footer"); %>
+</body>
+
+</html>

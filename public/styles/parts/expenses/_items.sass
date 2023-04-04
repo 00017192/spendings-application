@@ -1,0 +1,77 @@
+.items
+  width: 100%
+  border-spacing: 0
+
+  .headings
+    display: grid
+    grid-template-columns: 210px 1fr 120px 80px
+    color: $gunsmoke
+    border-bottom: 1px solid $midnight-moss
+
+    p
+      padding-bottom: 10px
+
+  .list
+    max-height: 450px
+    overflow-y: scroll
+
+    &::-webkit-scrollbar
+      width: 10px
+      border: 1px solid $midnight-moss
+    
+    &::webkit-scrollbar-button
+      display: none
+    
+    &::-webkit-scrollbar-track
+      background-color: transparent
+    
+    &::-webkit-scrollbar-thumb
+      background-color: $midnight-moss
+      
+
+    &-item
+      display: grid
+      grid-template-columns: 210px 1fr 120px 80px
+
+      & > *
+        padding: 20px 10px 
+      
+      &:hover
+        background-color: $midnight-moss
+        cursor: pointer
+        
+        span, h4
+          color: $white
+
+    .vendor
+      column-gap: 20px
+
+      &-image
+        width: 50px
+        height: 50px
+        border-radius: 50px
+
+      &-description
+        height: 50px
+
+      &-title
+        font-size: 21px
+        line-height: 24px
+
+      &-categories
+        font-size: 14px
+        line-height: 16px
+
+    &-actions
+      &-container
+        display: flex
+        align-items: center
+        column-gap: 20px
+      
+      &-button
+        &:hover .list-actions-icon
+            color: $white
+            cursor: pointer
+
+      &-icon
+        color: $gunsmoke

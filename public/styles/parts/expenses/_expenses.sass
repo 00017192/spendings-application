@@ -1,0 +1,32 @@
+.expenses
+  &-headings
+    margin-bottom: 60px
+
+  &-title 
+    font-size: 48px
+    line-height: 48px
+    
+  // Date range styles
+  @import "./date-range"
+
+  &-add-new-expense-button
+    height: 48px
+    padding: 0 1rem
+    font-family: $space-mono
+    font-weight: 700
+    background-color: $cararra
+
+    &:hover
+      color: $white
+      background-color: $midnight-moss
+      cursor: pointer
+
+  // Metrics styles
+  @import "./metrics"
+
+  // Items table styles
+  @import "./items"
+
+  &-absent
+    font-size: 32px
+    line-height: 40px
