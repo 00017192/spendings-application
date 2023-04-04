@@ -25,3 +25,5 @@ I use couple of packages, such as:
 - uniqid (for generating unique id of an expense item)
 
 Hope you will find my web application system useful, this is just the 1.0.0 version
+
+Github accoun -> https://github.com/00017192/spendings-application
