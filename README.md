@@ -9,7 +9,7 @@ This project was build for expenses manager, where you can update your expense i
 
 In order to start running the application, you hav to type in terminal the following code:
 
-`npm start`
+`npm install` and then `npm start`
 
 and the go to browser and type into search input
 
